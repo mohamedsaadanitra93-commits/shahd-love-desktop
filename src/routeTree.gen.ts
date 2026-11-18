@@ -10,33 +10,284 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ArcadeRouteImport } from './routes/arcade'
+import { Route as ArgumentRouteImport } from './routes/argument'
+import { Route as BugReportRouteImport } from './routes/bug-report'
+import { Route as CalculatorRouteImport } from './routes/calculator'
+import { Route as ConstellationRouteImport } from './routes/constellation'
+import { Route as DogHouseRouteImport } from './routes/dog-house'
+import { Route as DreamsRouteImport } from './routes/dreams'
+import { Route as FutureRouteImport } from './routes/future'
+import { Route as GardenRouteImport } from './routes/garden'
+import { Route as GymRouteImport } from './routes/gym'
+import { Route as HugRouteImport } from './routes/hug'
+import { Route as LetterRouteImport } from './routes/letter'
+import { Route as OpenWhenRouteImport } from './routes/open-when'
+import { Route as ReasonsRouteImport } from './routes/reasons'
+import { Route as ReceiptRouteImport } from './routes/receipt'
+import { Route as SecretRouteImport } from './routes/secret'
+import { Route as ShahdOsRouteImport } from './routes/shahd-os'
+import { Route as StatsRouteImport } from './routes/stats'
+import { Route as TimeCapsuleRouteImport } from './routes/time-capsule'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArcadeRoute = ArcadeRouteImport.update({
+  id: '/arcade',
+  path: '/arcade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArgumentRoute = ArgumentRouteImport.update({
+  id: '/argument',
+  path: '/argument',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BugReportRoute = BugReportRouteImport.update({
+  id: '/bug-report',
+  path: '/bug-report',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalculatorRoute = CalculatorRouteImport.update({
+  id: '/calculator',
+  path: '/calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConstellationRoute = ConstellationRouteImport.update({
+  id: '/constellation',
+  path: '/constellation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DogHouseRoute = DogHouseRouteImport.update({
+  id: '/dog-house',
+  path: '/dog-house',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DreamsRoute = DreamsRouteImport.update({
+  id: '/dreams',
+  path: '/dreams',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FutureRoute = FutureRouteImport.update({
+  id: '/future',
+  path: '/future',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GardenRoute = GardenRouteImport.update({
+  id: '/garden',
+  path: '/garden',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GymRoute = GymRouteImport.update({
+  id: '/gym',
+  path: '/gym',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HugRoute = HugRouteImport.update({
+  id: '/hug',
+  path: '/hug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LetterRoute = LetterRouteImport.update({
+  id: '/letter',
+  path: '/letter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpenWhenRoute = OpenWhenRouteImport.update({
+  id: '/open-when',
+  path: '/open-when',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReasonsRoute = ReasonsRouteImport.update({
+  id: '/reasons',
+  path: '/reasons',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReceiptRoute = ReceiptRouteImport.update({
+  id: '/receipt',
+  path: '/receipt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecretRoute = SecretRouteImport.update({
+  id: '/secret',
+  path: '/secret',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShahdOsRoute = ShahdOsRouteImport.update({
+  id: '/shahd-os',
+  path: '/shahd-os',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatsRoute = StatsRouteImport.update({
+  id: '/stats',
+  path: '/stats',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimeCapsuleRoute = TimeCapsuleRouteImport.update({
+  id: '/time-capsule',
+  path: '/time-capsule',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/arcade': typeof ArcadeRoute
+  '/argument': typeof ArgumentRoute
+  '/bug-report': typeof BugReportRoute
+  '/calculator': typeof CalculatorRoute
+  '/constellation': typeof ConstellationRoute
+  '/dog-house': typeof DogHouseRoute
+  '/dreams': typeof DreamsRoute
+  '/future': typeof FutureRoute
+  '/garden': typeof GardenRoute
+  '/gym': typeof GymRoute
+  '/hug': typeof HugRoute
+  '/letter': typeof LetterRoute
+  '/open-when': typeof OpenWhenRoute
+  '/reasons': typeof ReasonsRoute
+  '/receipt': typeof ReceiptRoute
+  '/secret': typeof SecretRoute
+  '/shahd-os': typeof ShahdOsRoute
+  '/stats': typeof StatsRoute
+  '/time-capsule': typeof TimeCapsuleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/arcade': typeof ArcadeRoute
+  '/argument': typeof ArgumentRoute
+  '/bug-report': typeof BugReportRoute
+  '/calculator': typeof CalculatorRoute
+  '/constellation': typeof ConstellationRoute
+  '/dog-house': typeof DogHouseRoute
+  '/dreams': typeof DreamsRoute
+  '/future': typeof FutureRoute
+  '/garden': typeof GardenRoute
+  '/gym': typeof GymRoute
+  '/hug': typeof HugRoute
+  '/letter': typeof LetterRoute
+  '/open-when': typeof OpenWhenRoute
+  '/reasons': typeof ReasonsRoute
+  '/receipt': typeof ReceiptRoute
+  '/secret': typeof SecretRoute
+  '/shahd-os': typeof ShahdOsRoute
+  '/stats': typeof StatsRoute
+  '/time-capsule': typeof TimeCapsuleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/arcade': typeof ArcadeRoute
+  '/argument': typeof ArgumentRoute
+  '/bug-report': typeof BugReportRoute
+  '/calculator': typeof CalculatorRoute
+  '/constellation': typeof ConstellationRoute
+  '/dog-house': typeof DogHouseRoute
+  '/dreams': typeof DreamsRoute
+  '/future': typeof FutureRoute
+  '/garden': typeof GardenRoute
+  '/gym': typeof GymRoute
+  '/hug': typeof HugRoute
+  '/letter': typeof LetterRoute
+  '/open-when': typeof OpenWhenRoute
+  '/reasons': typeof ReasonsRoute
+  '/receipt': typeof ReceiptRoute
+  '/secret': typeof SecretRoute
+  '/shahd-os': typeof ShahdOsRoute
+  '/stats': typeof StatsRoute
+  '/time-capsule': typeof TimeCapsuleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/arcade'
+    | '/argument'
+    | '/bug-report'
+    | '/calculator'
+    | '/constellation'
+    | '/dog-house'
+    | '/dreams'
+    | '/future'
+    | '/garden'
+    | '/gym'
+    | '/hug'
+    | '/letter'
+    | '/open-when'
+    | '/reasons'
+    | '/receipt'
+    | '/secret'
+    | '/shahd-os'
+    | '/stats'
+    | '/time-capsule'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/arcade'
+    | '/argument'
+    | '/bug-report'
+    | '/calculator'
+    | '/constellation'
+    | '/dog-house'
+    | '/dreams'
+    | '/future'
+    | '/garden'
+    | '/gym'
+    | '/hug'
+    | '/letter'
+    | '/open-when'
+    | '/reasons'
+    | '/receipt'
+    | '/secret'
+    | '/shahd-os'
+    | '/stats'
+    | '/time-capsule'
+  id:
+    | '__root__'
+    | '/'
+    | '/arcade'
+    | '/argument'
+    | '/bug-report'
+    | '/calculator'
+    | '/constellation'
+    | '/dog-house'
+    | '/dreams'
+    | '/future'
+    | '/garden'
+    | '/gym'
+    | '/hug'
+    | '/letter'
+    | '/open-when'
+    | '/reasons'
+    | '/receipt'
+    | '/secret'
+    | '/shahd-os'
+    | '/stats'
+    | '/time-capsule'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ArcadeRoute: typeof ArcadeRoute
+  ArgumentRoute: typeof ArgumentRoute
+  BugReportRoute: typeof BugReportRoute
+  CalculatorRoute: typeof CalculatorRoute
+  ConstellationRoute: typeof ConstellationRoute
+  DogHouseRoute: typeof DogHouseRoute
+  DreamsRoute: typeof DreamsRoute
+  FutureRoute: typeof FutureRoute
+  GardenRoute: typeof GardenRoute
+  GymRoute: typeof GymRoute
+  HugRoute: typeof HugRoute
+  LetterRoute: typeof LetterRoute
+  OpenWhenRoute: typeof OpenWhenRoute
+  ReasonsRoute: typeof ReasonsRoute
+  ReceiptRoute: typeof ReceiptRoute
+  SecretRoute: typeof SecretRoute
+  ShahdOsRoute: typeof ShahdOsRoute
+  StatsRoute: typeof StatsRoute
+  TimeCapsuleRoute: typeof TimeCapsuleRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +299,163 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/arcade': {
+      id: '/arcade'
+      path: '/arcade'
+      fullPath: '/arcade'
+      preLoaderRoute: typeof ArcadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/argument': {
+      id: '/argument'
+      path: '/argument'
+      fullPath: '/argument'
+      preLoaderRoute: typeof ArgumentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bug-report': {
+      id: '/bug-report'
+      path: '/bug-report'
+      fullPath: '/bug-report'
+      preLoaderRoute: typeof BugReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calculator': {
+      id: '/calculator'
+      path: '/calculator'
+      fullPath: '/calculator'
+      preLoaderRoute: typeof CalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/constellation': {
+      id: '/constellation'
+      path: '/constellation'
+      fullPath: '/constellation'
+      preLoaderRoute: typeof ConstellationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dog-house': {
+      id: '/dog-house'
+      path: '/dog-house'
+      fullPath: '/dog-house'
+      preLoaderRoute: typeof DogHouseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dreams': {
+      id: '/dreams'
+      path: '/dreams'
+      fullPath: '/dreams'
+      preLoaderRoute: typeof DreamsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/future': {
+      id: '/future'
+      path: '/future'
+      fullPath: '/future'
+      preLoaderRoute: typeof FutureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/garden': {
+      id: '/garden'
+      path: '/garden'
+      fullPath: '/garden'
+      preLoaderRoute: typeof GardenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gym': {
+      id: '/gym'
+      path: '/gym'
+      fullPath: '/gym'
+      preLoaderRoute: typeof GymRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hug': {
+      id: '/hug'
+      path: '/hug'
+      fullPath: '/hug'
+      preLoaderRoute: typeof HugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/letter': {
+      id: '/letter'
+      path: '/letter'
+      fullPath: '/letter'
+      preLoaderRoute: typeof LetterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/open-when': {
+      id: '/open-when'
+      path: '/open-when'
+      fullPath: '/open-when'
+      preLoaderRoute: typeof OpenWhenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reasons': {
+      id: '/reasons'
+      path: '/reasons'
+      fullPath: '/reasons'
+      preLoaderRoute: typeof ReasonsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/receipt': {
+      id: '/receipt'
+      path: '/receipt'
+      fullPath: '/receipt'
+      preLoaderRoute: typeof ReceiptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/secret': {
+      id: '/secret'
+      path: '/secret'
+      fullPath: '/secret'
+      preLoaderRoute: typeof SecretRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shahd-os': {
+      id: '/shahd-os'
+      path: '/shahd-os'
+      fullPath: '/shahd-os'
+      preLoaderRoute: typeof ShahdOsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stats': {
+      id: '/stats'
+      path: '/stats'
+      fullPath: '/stats'
+      preLoaderRoute: typeof StatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/time-capsule': {
+      id: '/time-capsule'
+      path: '/time-capsule'
+      fullPath: '/time-capsule'
+      preLoaderRoute: typeof TimeCapsuleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ArcadeRoute: ArcadeRoute,
+  ArgumentRoute: ArgumentRoute,
+  BugReportRoute: BugReportRoute,
+  CalculatorRoute: CalculatorRoute,
+  ConstellationRoute: ConstellationRoute,
+  DogHouseRoute: DogHouseRoute,
+  DreamsRoute: DreamsRoute,
+  FutureRoute: FutureRoute,
+  GardenRoute: GardenRoute,
+  GymRoute: GymRoute,
+  HugRoute: HugRoute,
+  LetterRoute: LetterRoute,
+  OpenWhenRoute: OpenWhenRoute,
+  ReasonsRoute: ReasonsRoute,
+  ReceiptRoute: ReceiptRoute,
+  SecretRoute: SecretRoute,
+  ShahdOsRoute: ShahdOsRoute,
+  StatsRoute: StatsRoute,
+  TimeCapsuleRoute: TimeCapsuleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
