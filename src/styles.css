@@ -70,6 +70,8 @@
   --color-manila: var(--manila);
   --color-manila-dark: var(--manila-dark);
   --color-terminal: var(--terminal);
+  --color-scanner: var(--scanner);
+  --color-scanner-beam: var(--scanner-beam);
   --color-garden: var(--garden);
   --color-garden-leaf: var(--garden-leaf);
 }
@@ -125,6 +127,8 @@
   --manila: oklch(0.85 0.07 80);
   --manila-dark: oklch(0.7 0.08 70);
   --terminal: oklch(0.12 0.03 160);
+  --scanner: oklch(0.06 0 0);
+  --scanner-beam: oklch(0.88 0.26 145);
   --garden: oklch(0.2 0.06 170);
   --garden-leaf: oklch(0.62 0.15 150);
 
@@ -284,6 +288,10 @@
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100vh); }
 }
+@keyframes heart-scan {
+  0%, 100% { top: 4%; }
+  50% { top: 92%; }
+}
 @keyframes caret {
   50% { opacity: 0; }
 }
@@ -421,6 +429,7 @@
 .animate-slide-up { animation: slide-up 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.1) both; }
 .animate-slide-in-right { animation: slide-in-right 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.1) both; }
 .animate-sway { animation: sway 4s ease-in-out infinite; }
+.animate-heart-scan { animation: heart-scan 2.2s ease-in-out infinite; }
 .animate-jitter { animation: jitter 0.15s linear infinite; }
 .caret::after { content: "▌"; animation: caret 1s steps(1) infinite; margin-left: 2px; }
 

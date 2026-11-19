@@ -93,7 +93,7 @@ function GymPage() {
     return () => window.clearInterval(t);
   }, [report]);
 
-  const a = ACTIONS[step];
+  const a = ACTIONS[step] ?? ACTIONS[0]!;
   const allSeen = EVIDENCE.every((e) => flipped[e.id]);
 
   return (

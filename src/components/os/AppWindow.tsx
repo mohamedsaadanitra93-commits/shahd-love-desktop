@@ -15,7 +15,8 @@ interface AppWindowProps {
 
 export function AppWindow({ title, subtitle, children, bodyClassName, frameClassName, accent = "var(--neon-pink)" }: AppWindowProps) {
   const navigate = useNavigate();
-  const [maximized, setMaximized] = useState(false);
+  // Windows open full screen by default; the middle button shrinks them to a floating window.
+  const [maximized, setMaximized] = useState(true);
   const [closing, setClosing] = useState(false);
 
   const goHome = (animate: boolean) => {
@@ -28,11 +29,11 @@ export function AppWindow({ title, subtitle, children, bodyClassName, frameClass
   };
 
   return (
-    <div className={cn("flex h-[calc(100dvh-56px)] w-full transition-all duration-300", maximized ? "p-0" : "p-0 sm:p-3 md:p-5")}>
+    <div className={cn("flex h-[calc(100dvh-56px)] w-full transition-all duration-300", maximized ? "p-0" : "p-0 sm:p-4 md:p-8")}>
       <section
         className={cn(
           "glass relative mx-auto flex h-full w-full flex-col overflow-hidden transition-all duration-300",
-          maximized ? "max-w-none rounded-none" : "max-w-6xl sm:rounded-2xl",
+          maximized ? "max-w-none rounded-none" : "max-w-5xl sm:rounded-2xl",
           closing ? "animate-window-minimize" : "animate-window-open",
           frameClassName,
         )}

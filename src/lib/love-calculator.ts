@@ -36,10 +36,10 @@ function tokenize(e: string): (number | string)[] | null {
   const out: (number | string)[] = [];
   let i = 0;
   while (i < e.length) {
-    const c = e[i];
+    const c = e[i] ?? "";
     if (/[0-9.]/.test(c)) {
       let j = i;
-      while (j < e.length && /[0-9.]/.test(e[j])) j++;
+      while (j < e.length && /[0-9.]/.test(e[j] ?? "")) j++;
       const n = Number(e.slice(i, j));
       if (!Number.isFinite(n)) return null;
       out.push(n);
@@ -59,7 +59,7 @@ export function evaluateNumeric(expr: string): number {
   // apply percentages and unary minus
   const t: (number | string)[] = [];
   for (let k = 0; k < tokens.length; k++) {
-    const tok = tokens[k];
+    const tok = tokens[k]!;
     if (tok === "%") {
       const prev = t.pop();
       if (typeof prev !== "number") return NaN;
@@ -72,7 +72,7 @@ export function evaluateNumeric(expr: string): number {
   // × ÷ first
   const stack: (number | string)[] = [];
   for (let k = 0; k < t.length; k++) {
-    const tok = t[k];
+    const tok = t[k]!;
     if (tok === "×" || tok === "÷") {
       const a = stack.pop();
       const b = t[++k];

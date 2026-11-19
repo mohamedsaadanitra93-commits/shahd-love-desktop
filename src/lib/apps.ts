@@ -17,8 +17,6 @@ export const EXTRA_APPS = [
   { id: "hug", name: "HUG.EXE", path: "/hug", tip: "Send an infinite amount of hugs.", hue: "var(--neon-pink)" },
   { id: "open-when", name: "OPEN.WHEN", path: "/open-when", tip: "Letters for every kind of day.", hue: "var(--neon-gold)" },
   { id: "reasons", name: "100.REASONS", path: "/reasons", tip: "A machine that generates reasons. It never runs out.", hue: "var(--neon-violet)" },
-  { id: "constellation", name: "CONSTELLATION", path: "/constellation", tip: "Every star is hiding a message.", hue: "var(--neon-cyan)" },
-  { id: "capsule", name: "TIME.CAPSULE", path: "/time-capsule", tip: "A message sent to our future selves.", hue: "var(--neon-cyan)" },
   { id: "argument", name: "ARGUMENT.SIM", path: "/argument", tip: "Shahd is angry. Choose wisely.", hue: "var(--neon-red)" },
   { id: "dog-house", name: "DOG.HOUSE", path: "/dog-house", tip: "Her house, her wardrobe, her rules.", hue: "var(--neon-pink)" },
 ] as const;

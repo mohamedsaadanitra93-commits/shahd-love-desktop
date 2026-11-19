@@ -1,6 +1,6 @@
 // All personal words live here so they are easy to tweak in one place.
 export const HER = "Shahd";
-export const ME = "Mohamed";
+export const ME = "Saad";
 export const DOG = "Lulu";
 
 export const DESKTOP_NOTIFICATIONS = [
@@ -134,28 +134,6 @@ export const REASONS = [
   "Reason #100: I tried to stop at 99 but my heart said keep going.",
 ];
 
-export interface StarMsg { x: number; y: number; label: string; text: string }
-// Heart-shaped constellation (coordinates in a 100x80 box)
-export const CONSTELLATION: StarMsg[] = [
-  { x: 50, y: 22, label: "The center", text: "Every star here is a small piece of what I feel. The center one is where you live." },
-  { x: 40, y: 12, label: "Morning star", text: "Your 'good morning' is the reason I stopped hating mornings." },
-  { x: 28, y: 8, label: "Laughter", text: "If I could bottle your laugh, I'd keep it next to my bed." },
-  { x: 16, y: 14, label: "Your eyes", text: "I get lost in your eyes and I genuinely don't want a map." },
-  { x: 10, y: 28, label: "Courage", text: "You're braver than you think. I see it every day." },
-  { x: 14, y: 42, label: "Softness", text: "Behind the dramatic queen is the softest heart I know." },
-  { x: 24, y: 54, label: "Home", text: "Home isn't a place anymore. It's a voice. Yours." },
-  { x: 36, y: 64, label: "Patience", text: "Thank you for every time you were patient with me. I noticed all of them." },
-  { x: 50, y: 74, label: "Forever", text: "This is the point of the heart. It's where all the lines meet. Like us." },
-  { x: 64, y: 64, label: "Dreams", text: "Your dreams are safe with me. I'll protect them like they're mine." },
-  { x: 76, y: 54, label: "Chaos", text: "You're a beautiful kind of chaos and I'd choose it every time." },
-  { x: 86, y: 42, label: "Strength", text: "You carry so much and still find room to care for others." },
-  { x: 90, y: 28, label: "Kindness", text: "The way you love people is one of the most beautiful things about you." },
-  { x: 84, y: 14, label: "Smile", text: "Your smile resets my whole system. Every single time." },
-  { x: 72, y: 8, label: "Us", text: "Out of billions of people, somehow it's you and me. Still not over it." },
-  { x: 60, y: 12, label: "Night star", text: "I think about you right before I fall asleep. Every night. No exceptions." },
-];
-
-export const CONSTELLATION_FILLER = 80;
 
 export interface OpenWhenLetter {
   id: string;
@@ -235,21 +213,6 @@ export const OPEN_WHEN: OpenWhenLetter[] = [
     ],
   },
 ];
-
-export const TIME_CAPSULE = {
-  from: "Today's version of me",
-  to: "Future us",
-  body: [
-    "Hello, future us.",
-    "If this capsule reached you, it means we made it through all the dramatic arguments, the missed calls, the 'mchitich lgym' investigations, and every ordinary day in between.",
-    "Right now, I'm sitting here building a whole operating system for one girl. That's how crazy she makes me.",
-    "I hope we still laugh at the same stupid things. I hope we still fight over nothing and make up in five minutes. I hope she still steals the blanket and I still let her.",
-    "I hope we travelled to all the places on our list. I hope the dog got her pink house.",
-    "Future me: be patient with her. Hold her hand in public. Tell her she's beautiful even when it's obvious. Especially when it's obvious.",
-    "Future her: thank you for staying. I know I'm not easy sometimes. You made my life softer.",
-    "See you in 70 years. Still not enough.",
-  ],
-};
 
 export const FINAL_LETTER = [
   `My ${HER},`,
@@ -351,4 +314,4 @@ export const ARGUMENT_OPTIONS = [
   },
 ];
 
-export const MEMORY_PAIRS = ["garden", "letter", "arcade", "dreams", "hug", "constellation", "calculator", "dog-house"] as const;
+export const MEMORY_PAIRS = ["garden", "letter", "arcade", "dreams", "hug", "reasons", "calculator", "dog-house"] as const;

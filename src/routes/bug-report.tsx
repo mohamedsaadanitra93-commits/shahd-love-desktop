@@ -51,6 +51,28 @@ const WARNINGS = [
   "Heart rate exceeded safe limits after a single text message.",
 ];
 
+/** Messages SHAHD.EXE sends to the browser console (F12) while BUG.REPORT is open. */
+const CONSOLE_MESSAGES = [
+  "SHAHD.EXE diagnostics console connected.",
+  "[ERROR] Shahd is too cute. Fix attempt failed.",
+  "[WARN] Boyfriend.brain stopped responding after a smile.",
+  "[INFO] Drama module running at 9999%. Working as intended.",
+  "[ERROR] Gym attendance not found. Case #070 still open.",
+  "[INFO] Clinginess detected. Developer secretly enjoys it.",
+  "[MSG] Saad: if you're reading this in the console... you're a hacker now. A cute one.",
+  "[MSG] Saad: there are no bugs here. Only features I love.",
+  "[MSG] Saad: twhchteek.",
+  "[OK] System stable. Heart overclocked. Goodbye, console 💗",
+];
+
+const CONSOLE_STYLE: Record<string, string> = {
+  ERROR: "color:#ff4d6d;font-weight:bold",
+  WARN: "color:#ffd166;font-weight:bold",
+  INFO: "color:#4cc9f0",
+  MSG: "color:#ff6fb5;font-weight:bold;font-size:13px",
+  OK: "color:#39ff88;font-weight:bold",
+};
+
 const PROGRESS = [
   { label: "Scanning cuteness levels", target: 140, note: "OVERFLOW" },
   { label: "Measuring drama output", target: 100, note: "9999 units" },
@@ -71,10 +93,21 @@ function BugReportPage() {
   useEffect(() => {
     let i = 0;
     const t = window.setInterval(() => {
-      setLines((l) => [...l, LOGS[i % LOGS.length]].slice(-40));
+      setLines((l) => [...l, LOGS[i % LOGS.length]!].slice(-40));
       i++;
     }, 650);
     return () => window.clearInterval(t);
+  }, []);
+
+  // Send the console messages one by one so they arrive like real system logs.
+  useEffect(() => {
+    const timers = CONSOLE_MESSAGES.map((msg, i) =>
+      window.setTimeout(() => {
+        const tag = /^\[(\w+)\]/.exec(msg)?.[1] ?? "";
+        console.log(`%c${msg}`, CONSOLE_STYLE[tag] ?? "color:#39ff88;font-family:monospace");
+      }, i * 900),
+    );
+    return () => timers.forEach((t) => window.clearTimeout(t));
   }, []);
 
   useEffect(() => {
@@ -85,7 +118,7 @@ function BugReportPage() {
     let k = 0;
     const t = window.setInterval(() => {
       const id = Date.now();
-      setWarnings((w) => [...w.slice(-2), { id, text: WARNINGS[k % WARNINGS.length] }]);
+      setWarnings((w) => [...w.slice(-2), { id, text: WARNINGS[k % WARNINGS.length] ?? "" }]);
       k++;
       window.setTimeout(() => setWarnings((w) => w.filter((x) => x.id !== id)), 5000);
     }, 7000);
@@ -94,7 +127,7 @@ function BugReportPage() {
 
   useEffect(() => {
     const t = window.setInterval(() => {
-      setProgress((p) => p.map((v, i) => Math.min(PROGRESS[i].target, v + 1 + Math.random() * 4)));
+      setProgress((p) => p.map((v, i) => Math.min(PROGRESS[i]?.target ?? 100, v + 1 + Math.random() * 4)));
     }, 80);
     return () => window.clearInterval(t);
   }, []);
@@ -123,6 +156,7 @@ function BugReportPage() {
             <p className="text-[11px] tracking-[0.4em] text-neon-green">DIAGNOSTIC MODE · ROOT</p>
             <h2 className="animate-glitch font-display text-2xl font-bold text-neon-red neon-text-red sm:text-4xl">SHAHD.EXE — SYSTEM DIAGNOSTICS</h2>
             <p className="mt-1 text-xs text-muted-foreground">5 critical features detected · 0 fixable · developer mood: smitten</p>
+            <p className="mt-1 text-[11px] text-neon-green/80">psst · open the browser console (F12) · there are messages waiting for you</p>
           </div>
           <button
             onClick={fixAll}
@@ -185,7 +219,7 @@ function BugReportPage() {
             <div className="space-y-3 rounded-xl border border-border bg-deep/60 p-4">
               <p className="text-[11px] tracking-widest text-neon-cyan">DIAGNOSTICS</p>
               {PROGRESS.map((p, i) => {
-                const v = progress[i];
+                const v = progress[i] ?? 0;
                 const over = v > 100;
                 return (
                   <div key={p.label}>

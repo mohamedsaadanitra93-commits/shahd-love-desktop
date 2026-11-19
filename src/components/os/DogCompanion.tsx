@@ -54,7 +54,7 @@ export function DogCompanion() {
         setEvent({ kind: "steal", id });
         notify({ title: "SECURITY ALERT", body: `${DOG} stole a heart from the taskbar! Click her to get it back.`, tone: "red" });
       } else {
-        setMessage(DOG_DELIVERIES[deliveryIndex.current % DOG_DELIVERIES.length]);
+        setMessage(DOG_DELIVERIES[deliveryIndex.current % DOG_DELIVERIES.length] ?? "");
         deliveryIndex.current += 1;
         setEvent({ kind: "deliver", id, stage: "arrive" });
         window.setTimeout(() => setEvent((e) => (e && e.kind === "deliver" && e.id === id ? { ...e, stage: "wait" } : e)), 2200);

@@ -32,7 +32,8 @@ function Desktop() {
       notify({ title: "SYSTEM BOOT", body: `All systems online. Welcome home, ${HER}.`, tone: "cyan" });
     }, 2500);
     const loop = window.setInterval(() => {
-      notify(DESKTOP_NOTIFICATIONS[i % DESKTOP_NOTIFICATIONS.length]);
+      const n = DESKTOP_NOTIFICATIONS[i % DESKTOP_NOTIFICATIONS.length];
+      if (n) notify(n);
       i += 1;
     }, 26000);
     return () => {

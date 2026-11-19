@@ -143,23 +143,6 @@ export function AppGlyph({ id, className }: { id: AppId; className?: string }) {
             <path d={heart(24, 23, 0.9)} fill="currentColor" />
           </>
         );
-      case "constellation":
-        return (
-          <>
-            <path d="M8 30 L18 14 L28 22 L40 10 M28 22 L34 38" {...s} strokeWidth={1.4} strokeDasharray="2 2" />
-            {[[8, 30], [18, 14], [28, 22], [40, 10], [34, 38]].map(([x, y]) => (
-              <circle key={`${x}${y}`} cx={x} cy={y} r={2.8} fill="currentColor" />
-            ))}
-          </>
-        );
-      case "capsule":
-        return (
-          <>
-            <rect x={6} y={16} width={36} height={16} rx={8} {...s} transform="rotate(-25 24 24)" fill="currentColor" fillOpacity={0.15} />
-            <circle cx={24} cy={24} r={6} {...s} fill="var(--deep)" />
-            <path d="M24 21 V24 L26 26" {...s} strokeWidth={1.6} />
-          </>
-        );
       case "argument":
         return (
           <>

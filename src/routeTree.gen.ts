@@ -14,7 +14,6 @@ import { Route as ArcadeRouteImport } from './routes/arcade'
 import { Route as ArgumentRouteImport } from './routes/argument'
 import { Route as BugReportRouteImport } from './routes/bug-report'
 import { Route as CalculatorRouteImport } from './routes/calculator'
-import { Route as ConstellationRouteImport } from './routes/constellation'
 import { Route as DogHouseRouteImport } from './routes/dog-house'
 import { Route as DreamsRouteImport } from './routes/dreams'
 import { Route as FutureRouteImport } from './routes/future'
@@ -28,7 +27,6 @@ import { Route as ReceiptRouteImport } from './routes/receipt'
 import { Route as SecretRouteImport } from './routes/secret'
 import { Route as ShahdOsRouteImport } from './routes/shahd-os'
 import { Route as StatsRouteImport } from './routes/stats'
-import { Route as TimeCapsuleRouteImport } from './routes/time-capsule'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -53,11 +51,6 @@ const BugReportRoute = BugReportRouteImport.update({
 const CalculatorRoute = CalculatorRouteImport.update({
   id: '/calculator',
   path: '/calculator',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConstellationRoute = ConstellationRouteImport.update({
-  id: '/constellation',
-  path: '/constellation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DogHouseRoute = DogHouseRouteImport.update({
@@ -125,11 +118,6 @@ const StatsRoute = StatsRouteImport.update({
   path: '/stats',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TimeCapsuleRoute = TimeCapsuleRouteImport.update({
-  id: '/time-capsule',
-  path: '/time-capsule',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -137,7 +125,6 @@ export interface FileRoutesByFullPath {
   '/argument': typeof ArgumentRoute
   '/bug-report': typeof BugReportRoute
   '/calculator': typeof CalculatorRoute
-  '/constellation': typeof ConstellationRoute
   '/dog-house': typeof DogHouseRoute
   '/dreams': typeof DreamsRoute
   '/future': typeof FutureRoute
@@ -151,7 +138,6 @@ export interface FileRoutesByFullPath {
   '/secret': typeof SecretRoute
   '/shahd-os': typeof ShahdOsRoute
   '/stats': typeof StatsRoute
-  '/time-capsule': typeof TimeCapsuleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -159,7 +145,6 @@ export interface FileRoutesByTo {
   '/argument': typeof ArgumentRoute
   '/bug-report': typeof BugReportRoute
   '/calculator': typeof CalculatorRoute
-  '/constellation': typeof ConstellationRoute
   '/dog-house': typeof DogHouseRoute
   '/dreams': typeof DreamsRoute
   '/future': typeof FutureRoute
@@ -173,7 +158,6 @@ export interface FileRoutesByTo {
   '/secret': typeof SecretRoute
   '/shahd-os': typeof ShahdOsRoute
   '/stats': typeof StatsRoute
-  '/time-capsule': typeof TimeCapsuleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -182,7 +166,6 @@ export interface FileRoutesById {
   '/argument': typeof ArgumentRoute
   '/bug-report': typeof BugReportRoute
   '/calculator': typeof CalculatorRoute
-  '/constellation': typeof ConstellationRoute
   '/dog-house': typeof DogHouseRoute
   '/dreams': typeof DreamsRoute
   '/future': typeof FutureRoute
@@ -196,7 +179,6 @@ export interface FileRoutesById {
   '/secret': typeof SecretRoute
   '/shahd-os': typeof ShahdOsRoute
   '/stats': typeof StatsRoute
-  '/time-capsule': typeof TimeCapsuleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -206,7 +188,6 @@ export interface FileRouteTypes {
     | '/argument'
     | '/bug-report'
     | '/calculator'
-    | '/constellation'
     | '/dog-house'
     | '/dreams'
     | '/future'
@@ -220,7 +201,6 @@ export interface FileRouteTypes {
     | '/secret'
     | '/shahd-os'
     | '/stats'
-    | '/time-capsule'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -228,7 +208,6 @@ export interface FileRouteTypes {
     | '/argument'
     | '/bug-report'
     | '/calculator'
-    | '/constellation'
     | '/dog-house'
     | '/dreams'
     | '/future'
@@ -242,7 +221,6 @@ export interface FileRouteTypes {
     | '/secret'
     | '/shahd-os'
     | '/stats'
-    | '/time-capsule'
   id:
     | '__root__'
     | '/'
@@ -250,7 +228,6 @@ export interface FileRouteTypes {
     | '/argument'
     | '/bug-report'
     | '/calculator'
-    | '/constellation'
     | '/dog-house'
     | '/dreams'
     | '/future'
@@ -264,7 +241,6 @@ export interface FileRouteTypes {
     | '/secret'
     | '/shahd-os'
     | '/stats'
-    | '/time-capsule'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -273,7 +249,6 @@ export interface RootRouteChildren {
   ArgumentRoute: typeof ArgumentRoute
   BugReportRoute: typeof BugReportRoute
   CalculatorRoute: typeof CalculatorRoute
-  ConstellationRoute: typeof ConstellationRoute
   DogHouseRoute: typeof DogHouseRoute
   DreamsRoute: typeof DreamsRoute
   FutureRoute: typeof FutureRoute
@@ -287,7 +262,6 @@ export interface RootRouteChildren {
   SecretRoute: typeof SecretRoute
   ShahdOsRoute: typeof ShahdOsRoute
   StatsRoute: typeof StatsRoute
-  TimeCapsuleRoute: typeof TimeCapsuleRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -325,13 +299,6 @@ declare module '@tanstack/react-router' {
       path: '/calculator'
       fullPath: '/calculator'
       preLoaderRoute: typeof CalculatorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/constellation': {
-      id: '/constellation'
-      path: '/constellation'
-      fullPath: '/constellation'
-      preLoaderRoute: typeof ConstellationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dog-house': {
@@ -425,13 +392,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StatsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/time-capsule': {
-      id: '/time-capsule'
-      path: '/time-capsule'
-      fullPath: '/time-capsule'
-      preLoaderRoute: typeof TimeCapsuleRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -441,7 +401,6 @@ const rootRouteChildren: RootRouteChildren = {
   ArgumentRoute: ArgumentRoute,
   BugReportRoute: BugReportRoute,
   CalculatorRoute: CalculatorRoute,
-  ConstellationRoute: ConstellationRoute,
   DogHouseRoute: DogHouseRoute,
   DreamsRoute: DreamsRoute,
   FutureRoute: FutureRoute,
@@ -455,7 +414,6 @@ const rootRouteChildren: RootRouteChildren = {
   SecretRoute: SecretRoute,
   ShahdOsRoute: ShahdOsRoute,
   StatsRoute: StatsRoute,
-  TimeCapsuleRoute: TimeCapsuleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

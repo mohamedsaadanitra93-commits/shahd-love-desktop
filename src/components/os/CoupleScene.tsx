@@ -35,7 +35,7 @@ export function CoupleScene({ onDogClick }: { onDogClick?: () => void }) {
       window.clearInterval(d);
     };
   }, []);
-  const b = BEATS[beat];
+  const b = BEATS[beat] ?? BEATS[0]!;
 
   return (
     <div className="relative mx-auto aspect-[5/4] w-full max-w-[460px] select-none">

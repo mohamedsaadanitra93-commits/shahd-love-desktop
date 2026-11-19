@@ -62,6 +62,81 @@ function Ring({ label, value, color, loops = 1 }: { label: string; value: number
   );
 }
 
+const ROMANTIC_LEVEL = "saad : twhchteek \n shahd : mzn";
+const SECRET_MESSAGE = "shahd kula 15min : saad elach makatbghinich ?";
+
+/** A black heart under a green scanner beam. Scanning reveals the secret message. */
+function HeartScanner() {
+  const [state, setState] = useState<"idle" | "scanning" | "done">("idle");
+  const [pct, setPct] = useState(0);
+
+  const scan = () => {
+    setState("scanning");
+    setPct(0);
+    const t = window.setInterval(() => {
+      setPct((p) => {
+        if (p >= 100) {
+          window.clearInterval(t);
+          setState("done");
+          return 100;
+        }
+        return p + 1;
+      });
+    }, 35);
+  };
+
+  return (
+    <div className="grid items-center gap-6 rounded-2xl border border-scanner-beam/40 bg-scanner p-5 sm:grid-cols-[220px_1fr]">
+      <div className="relative mx-auto aspect-square w-48 overflow-hidden rounded-xl border border-scanner-beam/30 bg-scanner sm:w-full">
+        <div
+          className="absolute inset-0 opacity-25"
+          style={{ backgroundImage: "linear-gradient(var(--scanner-beam) 1px, transparent 1px), linear-gradient(90deg, var(--scanner-beam) 1px, transparent 1px)", backgroundSize: "16px 16px" }}
+        />
+        <svg viewBox="0 0 100 100" className="relative h-full w-full p-5" aria-label="Black heart being scanned">
+          <path
+            d="M50 86 C20 66 8 48 8 32 C8 18 19 9 31 9 C40 9 46 14 50 21 C54 14 60 9 69 9 C81 9 92 18 92 32 C92 48 80 66 50 86 Z"
+            fill="var(--scanner)"
+            stroke="var(--scanner-beam)"
+            strokeWidth={1.5}
+            className={cn(state !== "idle" && "animate-heartbeat")}
+            style={{ transformOrigin: "center", filter: "drop-shadow(0 0 6px var(--scanner-beam))" }}
+          />
+        </svg>
+        {state === "scanning" && (
+          <div className="animate-heart-scan absolute inset-x-0 h-1 bg-scanner-beam" style={{ boxShadow: "0 0 18px 6px var(--scanner-beam)" }} />
+        )}
+        <p className="absolute bottom-1 left-2 font-mono text-[9px] text-scanner-beam">
+          {state === "idle" ? "READY" : state === "scanning" ? `SCANNING ${pct}%` : "SCAN COMPLETE"}
+        </p>
+      </div>
+      <div className="font-mono text-scanner-beam">
+        <p className="text-[11px] tracking-[0.4em]">HEART SCANNER · BIOMETRIC</p>
+        <p className="mt-1 font-display text-xl font-bold">Scan Shahd's heart for hidden messages</p>
+        {state === "idle" && (
+          <button onClick={scan} className="mt-4 rounded-lg border border-scanner-beam px-5 py-2 text-sm font-bold tracking-widest transition-colors hover:bg-scanner-beam/15">
+            START SCAN
+          </button>
+        )}
+        {state === "scanning" && (
+          <div className="mt-4 max-w-sm">
+            <div className="h-2 rounded-full bg-scanner-beam/15">
+              <div className="h-full rounded-full bg-scanner-beam" style={{ width: `${pct}%`, boxShadow: "0 0 10px var(--scanner-beam)" }} />
+            </div>
+            <p className="mt-2 text-xs opacity-80">decrypting heart signals...</p>
+          </div>
+        )}
+        {state === "done" && (
+          <div className="animate-pop-in mt-4">
+            <p className="text-xs opacity-80">SECRET MESSAGE FOUND:</p>
+            <p className="mt-1 text-lg font-bold sm:text-xl">"{SECRET_MESSAGE}"</p>
+            <button onClick={scan} className="mt-3 text-[11px] underline opacity-80">scan again</button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 const REACTIONS = ["LAUGHS", "DRAMATIC GASP", "SUDDEN HUG", "'WHAT?!'", "SILENT STARE", "CRIES AT AD", "RANDOM DANCE", "'I'M FINE'", "STEALS FOOD"];
 const DAY_LEVEL = ["EXTREME", "HIGH", "MEDIUM-ISH", "SUSPICIOUSLY LOW", "HIGH", "CLINGY+", "MAXIMUM"];
 
@@ -69,7 +144,7 @@ function LiveGraph() {
   const [pts, setPts] = useState<number[]>(() => Array.from({ length: 40 }, (_, i) => 60 + Math.sin(i / 3) * 20));
   useEffect(() => {
     const t = window.setInterval(() => {
-      setPts((p) => [...p.slice(1), Math.max(10, Math.min(98, p[p.length - 1] + (Math.random() - 0.4) * 22))]);
+      setPts((p) => [...p.slice(1), Math.max(10, Math.min(98, (p[p.length - 1] ?? 60) + (Math.random() - 0.4) * 22))]);
     }, 450);
     return () => window.clearInterval(t);
   }, []);
@@ -81,7 +156,7 @@ function LiveGraph() {
       ))}
       <polygon points={`0,100 ${path} 300,100`} fill="var(--neon-pink)" opacity={0.15} />
       <polyline points={path} fill="none" stroke="var(--neon-pink)" strokeWidth={2} style={{ filter: "drop-shadow(0 0 4px var(--neon-pink))" }} />
-      <circle cx={300} cy={100 - pts[pts.length - 1]} r={4} fill="var(--neon-pink)" />
+      <circle cx={300} cy={100 - (pts[pts.length - 1] ?? 60)} r={4} fill="var(--neon-pink)" />
     </svg>
   );
 }
@@ -95,8 +170,10 @@ function Bars() {
   return (
     <div className="flex h-32 items-end gap-2">
       {vals.map((v, i) => (
-        <div key={i} className="flex flex-1 flex-col items-center gap-1">
-          <div className="w-full rounded-t-md bg-neon-cyan/80 transition-all duration-700 shadow-[0_0_10px_var(--neon-cyan)]" style={{ height: `${v}%` }} />
+        <div key={i} className="flex h-full flex-1 flex-col items-center gap-1">
+          <div className="flex w-full flex-1 items-end">
+            <div className="w-full rounded-t-md bg-neon-cyan/80 transition-all duration-700 shadow-[0_0_10px_var(--neon-cyan)]" style={{ height: `${v}%` }} />
+          </div>
           <span className="font-mono text-[9px] text-muted-foreground">{["M", "T", "W", "T", "F", "S", "S"][i]}</span>
         </div>
       ))}
@@ -170,8 +247,8 @@ function StatsPage() {
           </Card>
           <Card title="ROMANTIC LEVEL" value="">
             <button onClick={() => setReveal((r) => !r)} className="flex items-center gap-2 text-left">
-              <span className={cn("rounded bg-foreground px-2 font-display text-xl font-bold text-foreground transition-all", reveal && "bg-transparent text-neon-pink")}>
-                {reveal ? "∞ (still classified)" : "CLASSIFIED"}
+              <span className={cn("whitespace-pre-line rounded bg-foreground px-2 font-display text-xl font-bold text-foreground transition-all", reveal && "bg-transparent text-base leading-snug text-neon-pink")}>
+                {reveal ? ROMANTIC_LEVEL : "CLASSIFIED"}
               </span>
               <Lock className="h-4 w-4 text-muted-foreground" />
             </button>
@@ -202,6 +279,8 @@ function StatsPage() {
             <p className="font-mono text-[11px] text-muted-foreground">see BUG #003</p>
           </Card>
         </div>
+
+        <HeartScanner />
 
         <div className="grid gap-4 lg:grid-cols-[2fr_1fr]">
           <div className="glass rounded-2xl p-4">
